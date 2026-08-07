@@ -1,0 +1,70 @@
+
+<section class="px-0 cssSlider">
+  <div class="px-side mb-8 ">
+      <div class="max-w-[{{block.block-content-max-width}}]">
+          <div>
+            {% if noH1 == true %}
+            {{block.block-content-html | replace: 'h2','h1'}}
+            {% else %}
+            {{block.block-content-html}}
+            {% endif %}
+      
+            {% if block.block-content-html contains "h2" %}
+              {% assign noH1 = false %}
+            {% endif %}
+          </div>
+      </div>
+    </div>
+    <div class="gap-[12px] flex flex-nowrap overflow-scroll no-scrollbar scroll-container scheme-{{block.scroll-items-color-scheme}}" {% if block.max-width %} style="max-width:  {{block.max-width}} 500px"{% endif %}>
+
+
+      {% for col in block.scroll-items %}
+        <div class="shrink-0 scroll-item color-set {% if forloop.first  %} ml-full-side {% endif %} {% if forloop.last  %} mr-full-side {% endif %}" style="width: min( {{block.image-width}} , 500px );">
+          {% if col.link %}<a href="{{col.link}}">{% endif%}
+            <div class="image-sizer relative">
+              <img class="w-full h-full object-cover inset-0 absolute" src="{{col.image}}" alt=""loading="lazy">
+            </div>
+            <div class="p-4">
+              {{col.block-content-html}}
+            </div>
+          {% if col.link %}</a>{% endif%}
+        </div>
+      {% endfor %}
+    </div>
+    <div class="px-side py-8">
+      <div class="max-width">
+        <div class="flex justify-between">
+          <button class="btn btn-secondary scroll-left" aria-label="scroll-left"><?xml version="1.0" encoding="UTF-8"?><svg width="34px" height="34px" stroke-width="0.8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M15 6L9 12L15 18" stroke="#000000" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+          <button class="btn btn-secondary scroll-right" aria-label="scroll-right"><?xml version="1.0" encoding="UTF-8"?><svg width="34px" height="34px" stroke-width="0.8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M9 6L15 12L9 18" stroke="#000000" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+<style>
+    #section-{{forloop.index}} .image-sizer {
+    aspect-ratio: {% include logic/aspect-logic.html aspect = block.img_aspect %} ;
+  }
+</style>
+
+
+<script>
+
+  const section{{forloop.index}}ScrollContainer = document.querySelector('#section-{{forloop.index}} .scroll-container');
+  function scrollLeft() {
+    section{{forloop.index}}ScrollContainer.scrollBy({
+      left: -section{{forloop.index}}ScrollContainer.clientWidth,
+      behavior: 'smooth'
+    });
+    function scrollRight() {
+      section{{forloop.index}}ScrollContainer.scrollBy({
+        left: section{{forloop.index}}ScrollContainer.clientWidth,
+        behavior: 'smooth'
+      });
+    }
+  }
+
+</script>

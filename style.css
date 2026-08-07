@@ -1,0 +1,712 @@
+/* ----------- Color Variables --------- */
+/* Looking for the color variables? They have been moved to the inline-styles file in the _includes folder, and pull variables from the site-settings folder in the _data folder.  */
+
+/* Tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@source inline("slick-dots, slick-nav, .slick-next, .slick-prev, .slick-slide, .slick-list, .slick-track, .slick-active, .slick-initialized, .slick-arrow");
+
+* {
+    padding: 0%;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+img{ max-width: 100%; height:auto;}
+
+html {
+  scroll-padding-top: 107px;
+}
+
+body{
+  font-family:  var(--body-font-family);
+  max-width: 100vw;
+  overflow-X: hidden;
+  /* Set padding equal to height of fixed header */
+  scroll-padding-top: 107px;
+  background-color: #f0f0f0;
+}
+
+body.locked{
+  overflow-y:hidden;
+}
+
+
+
+h3,h4,h5,h6,.small-heading {
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-family: var(--heading-font-sans-family);
+  font-optical-sizing: auto;
+  text-wrap: balance;
+}
+
+.large-heading {
+  font-size: 2rem;
+}
+
+h1, h2  {
+  font-family: var(--heading-font-serif-family);
+  font-weight: 300;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3, .small-heading {
+font-family: var(--heading-font-sans-family);
+font-size: 1rem;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+letter-spacing: 0.03656rem;
+text-transform: uppercase;
+}
+
+h1,
+h2,
+h3{
+  margin-top:0.5em;
+  margin-bottom:0.5em;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+h1:last-child,
+h2:last-child,
+h3:last-child,
+p:last-child{
+  margin-bottom:0;
+}
+
+
+p,li {
+  font-size: 0.9rem;
+  line-height: 150%;
+  font-weight:300;
+}
+
+body ul{
+  list-style: disc;
+  margin-left: 1rem;
+}
+
+  #animated-text {
+    display: inline-block;
+    white-space: pre-wrap;
+  }
+  #animated-text .char {
+    opacity: 0;
+    display: inline-block;
+  }
+  #animated-text.animate .char {
+    animation: fadeIn 0.3s ease forwards;
+    animation-delay: var(--delay);
+  }
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+
+
+/* form */
+
+label {
+  margin-bottom: 2rem;
+}
+
+input, textarea {
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid;
+  background: transparent;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+  resize: none;
+  border-radius: 0
+}
+
+input[type="submit"]{
+  border: 1px solid;
+  padding: 10px 20px
+}
+
+input:focus, input:focus-within,
+textarea:focus, textarea:focus-within{
+  outline: none;
+}
+
+/* editor styles for none content uses */
+
+.heading-md {
+  font-size: 1.6rem;
+}
+
+.heading-lg {
+  font-size: 2.0rem;
+}
+
+.heading-sm {
+  font-size: 1.2rem;
+}
+
+hr {
+  border: none;
+  border-bottom: 2px solid #C1C4B3;
+  margin: 2rem 0;
+}
+
+section,header,footer{
+    padding: var(--vert-gap) var(--side-gap);
+    background-size: cover;
+    background-position: center;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+}
+header{
+    padding: 0 var(--side-gap)
+}
+
+header a,header .unlinked {
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;  
+}
+
+header a:hover, header .unlinked:hover {
+  opacity: .6;
+}
+
+#header{
+  z-index: 1000;
+
+}
+
+header {
+    background-color: transparent;
+}
+
+footer * {
+  border-color: initial;
+}
+
+footer .main-link {
+font-size: 0.9rem;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+text-transform: uppercase;
+}
+
+
+footer .heading-md{
+  color: #61625A;
+  font-family: inherit;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 2.32px;
+  text-transform: uppercase;
+}
+
+
+
+footer .footer-generic, footer .footer-generic p{
+color: #87897D;
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+letter-spacing: 0.54px;
+}
+
+
+
+@media (max-width: 768px ) {
+  footer .footer-generic, footer .footer-generic p, footer .main-link, .footer .location p{
+    font-size: .9rem;
+    line-height: 1;
+    font-weight: 400;
+  }
+  footer .footer-generic, footer .main-link,  footer .footer-generic, footer .location p{
+    padding-top:.5rem;
+    padding-bottom: .5rem;
+    display: block;
+  }
+}
+
+
+.standard-padding{
+    padding: var(--vert-gap) var(--side-gap);
+}
+
+.max-width{ 
+    max-width: var(--max-width);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.color-set{
+    color: var(--text-color);
+    background-color: var(--bg-color);
+}
+
+/* extra for editor */
+
+
+[class*='button']{
+  font-family: var(--heading-font-sans-family);
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  padding: 1em 4em;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid;
+  display:inline-block;
+  opacity: 1;
+  margin-top: 0.5rem;
+  line-height: 0.8;
+}
+
+
+a.button:hover {
+  opacity:0.5;
+}
+
+/* .shadow-hover{
+  display: block;
+  transition: box-shadow .5s;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+}
+.shadow-hover:hover{
+  box-shadow: 5px 5px 5px #61625a, -5px 5px 5px #61625a;
+} */
+
+/* blog content */
+
+.blog-content h1 {
+  font-size: 2.5rem;
+}
+.blog-content h2 {
+  font-size: 2rem;
+}
+.blog-content h3 {
+  font-size: 1.5rem;
+}
+
+.blog-content ul,
+.blog-content ol {
+  margin-bottom: 1rem;
+}
+
+.blog-content img {
+  margin: 1rem 0;
+}
+
+.blog-3-col-grid .Square {
+aspect-ratio: 1;
+position: relative;
+}
+.blog-3-col-grid .Tall.Portrait {
+aspect-ratio: 9/16;
+position: relative;
+}
+.blog-3-col-grid .Extra.Tall {
+aspect-ratio: 9/25;
+position: relative;
+}
+.blog-3-col-grid .Portrait:not(.Tall) {
+aspect-ratio: 4/5;
+position: relative;
+}
+.blog-3-col-grid .Wide.Landscape {
+aspect-ratio: 16/9;
+position: relative;
+}
+.blog-3-col-grid .Landscape:not(.Wide) {
+  aspect-ratio: 5/4;
+  position: relative;
+  }
+
+
+.blog-3-col-grid > .flex-1 > :not(.Original) > img {
+  object-fit: cover;
+  object-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  }
+
+
+/* floating images */
+
+.float-images-right img{
+float: right
+}
+.float-images-left img{
+    float: left
+    }
+
+    .post-content > * {
+        clear: both;
+    }
+
+
+
+
+    /* header nav */
+
+    .drop-finder:hover .drop-down {
+        display: block;
+    }
+
+    /* footer styles */
+    .footer-grid-col p {
+      margin-bottom: 0;
+    }
+
+/* custom grid */
+
+
+.col-w-2{grid-column:span 2;}
+.col-w-3{grid-column:span 3;}
+.col-w-4{grid-column:span 4;}
+.col-w-5{grid-column:span 5;}
+.col-w-6{grid-column:span 6;}
+
+
+/* mobile */
+
+@media (max-width: 768px) {
+    .mob-col-w-1{grid-column:span 1;}
+    .mob-col-w-2{grid-column:span 2;}
+    .mob-col-w-3{grid-column:span 3;}
+    .mob-col-w-4{grid-column:span 4;}
+    .mob-col-w-5{grid-column:span 5;}
+    .mob-col-w-6{grid-column:span 6;}
+
+    .heading-md {
+      font-size: 1.3rem;
+}
+
+    .heading-lg {
+      font-size: 1.6rem;
+    }
+    p {
+      font-size: 0.9rem;
+    }
+    section {
+      padding: 10%;
+    }
+
+  }
+
+.col-h-2{grid-row: span 2 ;}
+.col-h-3{grid-row: span 3 ;}
+.col-h-4{grid-row: span 4 ;}
+.col-h-5{grid-row: span 5 ;}
+.col-h-6{grid-row: span 6 ;}
+.col-h-7{grid-row: span 7 ;}
+
+
+/* burger menu */
+
+/* this is where you style the button if you want to add more space between the spans than add padding to this div but make sure you also add it to the top and bottom active classes on there top/bottom or else your cross wont line up*/
+
+.burger-button {
+  position: relative;
+  top: 0vh;
+  right: 0;
+  z-index: 901;
+  padding: 8px;
+  }
+  /*this is where you can change the color of the buttons*/
+  .burger-button span{
+    width: 40px;
+    border: 1px solid var(--text-color);
+    background-color: var(--text-color);
+    display: block;
+    border-radius: 22px;
+    transition: 2s;
+  }
+/* burger button active color */
+  /* .burger-button.active span{
+    border-color: green;
+    background-color:#383;
+  } */
+  
+  .burger-top, .burger-bottom{
+    position: absolute;
+  }
+  
+  .burger-top{
+    top: -2px;
+  }
+  
+  .burger-bottom{
+    bottom: -2px;
+  }
+  /* make sure this has the same top as the burger button has padding*/
+  .burger-button.active .burger-top{
+    position: absolute;
+    top: 8px;
+    transform: rotateZ(45deg);
+  }
+  
+  .burger-button.active .burger-middle{
+  /*   transform: rotateZ(270deg); */
+    border-color: rgba(0,0,0,0);
+    background-color:rgba(0,0,0,0);
+  }
+  
+  /* make sure this has the same bottom as the burger button has padding*/
+  
+  .burger-button.active .burger-bottom{
+    position: absolute;
+    bottom: 8px;
+    transform: rotateZ(-45deg);
+  }
+  
+  .burger-menu {
+    position: fixed;
+    top: 0vh;
+    padding:6rem 5% 5%;
+    left:100vw;
+    right: -100vw;
+    bottom: 0vh;
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.1);
+    z-index: 801;
+    transition:1s;
+    overflow: scroll;
+  }
+  .burger-menu.active{
+    left:0;
+    right:0;
+  }
+
+  .burger-menu .main-link{
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-top: 0.5rem; 
+  }
+
+  .burger-menu a {
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 300;
+    display:block;
+    padding:5px 15px;
+    /* text-align:center; */
+    white-space:nowrap;
+  }
+  
+
+/* accordian */
+.accordion-parent p{
+   font-size: 0.9rem;
+}
+.drop-sec{
+    overflow: hidden;
+    height: calc(var(--true-height) + var(--small-padding));
+    /* transition: max-height 2s; */
+   }
+
+   .drop-sec.collapsed {
+    height: 0;
+   }
+
+   
+   .expandButton{
+    border: 1px solid var(--text-color);
+    border-bottom: 0 solid;
+    padding: var(--small-padding);
+    display: flex;
+    justify-content: space-between;
+   }
+
+   .drop-sec{
+     padding-left: var(--small-padding);
+     padding-right: var(--small-padding);
+     border-left: 1px solid var(--text-color);
+     border-right: 1px solid var(--text-color);
+     border-top: 0 solid;
+     transition: padding-top var(--animation-speed), padding-bottom var(--animation-speed), border var(--animation-speed), height var(--animation-speed);
+    }
+    
+    .accordion-parent > :last-child .drop-sec{
+        border-bottom:  1px solid var(--text-color);
+    }
+
+    .drop-sec:not(.collapsed){
+      padding-bottom: var(--small-padding);
+   }
+
+   .expandButton span::after{
+    content: "+";
+   }
+   .expandButton.open span::after{
+    content: "-";
+   }
+
+   /* ticket banner */
+
+   
+.tickerBanner{
+    --bannerBlockLength: 280px;
+    --bannerBlockTime: 2s;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: row-reverse;
+  text-align: center;
+  }
+  
+  
+  .tickerBanner > * {
+    display: inline-block;
+    padding: 1vw;
+    flex-shrink: 0;
+    position: relative;
+  }
+  /* for pause on hover works but is very jumpy */
+  /* .tickerBanner.active:hover > *{
+    animation-play-state: paused;
+  } */
+
+  .tickerBanner.active > * {
+    animation: ticker 2s infinite linear;
+    animation-duration: var(--bannerBlockTime), 2s;
+  } 
+  
+  @keyframes ticker {
+      from {left:0}
+      to   {left:var(--bannerBlockLength)}
+  }
+
+
+  /* slider */
+
+  body .slick-prev, body .slick-next {
+    top: initial;
+    bottom: -90px;
+    z-index: 99;
+    height: 50px;
+    width: 50px;
+  }
+  body .slick-prev {
+  left: var(--max-width-side-padding);
+  }
+  body .slick-next {
+  right: var(--max-width-side-padding);
+  }
+
+  body .slick-next::before, body .slick-prev::before{
+    font-family: inherit;
+    color: var(--text-color);
+    font-size: 50px;
+    content: '';
+  }
+
+.slick-nav {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-top: 3rem;
+  position: relative;
+  gap:1rem;
+}
+
+  .slick-nav .slick-prev,
+  .slick-nav .slick-next {
+    top: unset;
+    bottom: unset;
+    left: unset;
+    right: unset;
+    position: relative;
+    z-index: 99;
+    height: 15px;
+    width: 15px;
+  }
+
+  .slick-nav .slick-dots {
+    order: 2;
+    margin: 0;
+    position: relative;
+    bottom:unset;
+    width: auto;
+  }
+    .slick-nav .slick-dots li {
+    width: 15px;
+    height: 15px;
+    top: -2px;
+  }
+
+  .slick-nav .slick-next {
+    order: 3;
+    margin-left: -7px;
+  }
+
+.slick-nav .slick-dots li button::before {
+  color: transparent;
+  background-color: transparent;
+  border: 1px solid #fff;
+  border-radius: 20%;
+  display: inline-block;
+  height: 10px;
+  width: 10px;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.slick-nav .slick-dots li.slick-active button::before {
+  color: transparent;
+  background-color: white;
+}
+
+
+  @media (max-width: 768px ) {
+  body .slick-prev, body .slick-next {
+    bottom: -60px;
+    height: 15px;
+    width: 15px;
+    }
+
+  body .slick-prev svg, body .slick-next svg {
+    width: 15px;
+    height: 15px;
+  }
+      .slick-nav .slick-dots li {
+    width: 8px;
+    height: 8px;
+    } 
+
+  }
+
+  .star-aligner img {
+    float: left;
+  }
+  .star-aligner > * {
+    clear: both;
+  }
+  .text-box > * {
+    clear: both;
+  }
+  /* horizontal scroll section */
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}

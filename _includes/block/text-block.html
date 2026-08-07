@@ -1,0 +1,31 @@
+
+<section class="flex justify-center items-center">
+      <div class="max-width
+      {% case block.text-alignment %}
+      {% when 'right' %}
+          text-right
+      {% when 'center' %}
+          text-center
+      {% else %}
+      {% endcase %}"
+       {% if block.max-width %} style="max-width: {{block.max-width}} "{% endif %}>
+          <div class="">
+            {% if noH1 == true %}
+            {{block.block-content-html | replace: 'h2','h1'}}
+            {% else %}
+            {{block.block-content-html}}
+            {% endif %}
+      
+            {% if block.block-content-html contains "h2" %}
+              {% assign noH1 = false %}
+            {% endif %}
+          </div>
+      </div>
+    </section>
+
+
+<style>
+       #section-{{forloop.index}} section{
+        min-height: {{block.min-height}};
+      }
+</style>

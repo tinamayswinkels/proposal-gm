@@ -1,0 +1,861 @@
+_schema: _schema
+paths:
+  uploads: uploads
+  static: ''
+  dam_uploads: ''
+  dam_static: ''
+  collections: ''
+  data: _data
+  layouts: _layouts
+  includes: _includes
+collections_config:
+  pages:
+    path: ''
+    icon: notes
+    output: true
+    filter: strict
+    description: ''
+    _editables:
+    _inputs:
+    _select_data:
+    _structures:
+    disable_add: false
+    disable_add_folder: false
+    disable_file_actions: false
+    schemas:
+      default page:
+        path:
+        reorder_inputs: true
+        hide_extra_inputs: false
+        remove_empty_inputs: false
+        remove_extra_inputs: true
+        name:
+        icon: notes
+        preview:
+        _editables:
+        _inputs:
+        _select_data:
+        _structures:
+        create:
+        new_preview_url:
+_inputs:
+  layout:
+    type: text
+    hidden: true
+    cascade: true
+  col-type:
+    type: text
+    hidden: true
+    cascade: true
+  block-content-html:
+    type: html
+    options:
+      allow_resize: true
+      allow_custom_markup: false
+      remove_custom_markup: false
+      initial_height: 320
+      center: text-center
+      format: p h2 h3 a img
+      bulletedlist: true
+      numberedlist: true
+      horizontalrule: true
+      image: true
+      image_size_attributes: true
+      link: true
+      resize_style: contain
+      snippet: false
+      styles: /editor.css
+    label: Content
+    cascade: true
+  pre-heading-style:
+    type: select
+    options:
+      allow_empty: true
+      values:
+        - style 1
+        - style 2
+        - style 3
+  color-scheme:
+    type: select
+    options:
+      allow_empty: false
+      values:
+        - base
+        - featured
+        - dark
+    cascade: true
+  slider_col_color_scheme:
+    type: select
+    options:
+      allow_empty: false
+      values:
+        - base
+        - featured
+        - dark
+    cascade: true
+  heading-style:
+    type: select
+    options:
+      allow_empty: true
+      values:
+        - style 1
+        - style 2
+        - style 3
+    cascade: true
+  sub-heading-style:
+    type: select
+    options:
+      allow_empty: true
+      values:
+        - style 1
+        - style 2
+        - style 3
+    cascade: true
+  content:
+    type: markdown
+    options:
+      allow_resize: true
+      allow_custom_markup: false
+      remove_custom_markup: false
+      initial_height: 320
+      format: p h2 h3 a img
+      horizontalrule: true
+      image: true
+      image_size_attributes: true
+      link: true
+      resize_style: contain
+      snippet: true
+      styles: /editor.css
+    label: Content
+    cascade: true
+  post_content:
+    type: markdown
+    options:
+      allow_resize: true
+      allow_custom_markup: false
+      remove_custom_markup: false
+      initial_height: 320
+      format: p h2 h3 a img
+      horizontalrule: true
+      image: true
+      image_size_attributes: true
+      link: true
+      resize_style: contain
+      snippet: true
+      styles: /editor.css
+    label: Content
+    cascade: true
+  min-height:
+    type: select
+    options:
+      allow_empty: true
+      values:
+        0vh: Content height
+        50vh: Half Screen
+        65vh: Three-Quarter Screen
+        80vh: Just short of Full Screen
+        100vh: Full Screen
+    cascade: true
+  overlay-opacity:
+    type: select
+    options:
+      allow_empty: true
+      values:
+        0op: no overlay
+        0.2op: slight tint
+        0.5op: medium tint
+        0.75op: heavy tint
+    cascade: true
+  text-alignment:
+    type: select
+    options:
+      allow_empty: false
+      values:
+        - left
+        - center
+        - right
+    cascade: true
+  desktop-image-position:
+    type: select
+    options:
+      allow_empty: false
+      values:
+        - left
+        - right
+    cascade: true
+  vert-alignment:
+    type: select
+    options:
+      allow_empty: false
+      values:
+        - top
+        - middle
+        - bottom
+    cascade: true
+  img_aspect:
+    type: select
+    options:
+      allow_empty: false
+      values:
+        - Square
+        - Tall Portrait
+        - Portrait
+        - Landscape
+        - Wide Landscape
+        - Extra Tall
+        - Original
+    cascade: true
+  video_aspect:
+    type: select
+    options:
+      allow_empty: false
+      values:
+        - Testimonials
+        - Educational
+    cascade: true
+  video-orientation:
+    type: select
+    options:
+      - vertical
+      - horizontal
+    cascade: true
+  mobile-image-position:
+    type: select
+    options:
+      allow_empty: false
+      values: 
+        - bottom
+        - top
+  float-direction:
+    type: select
+    options:
+      allow_empty: false
+      values:
+        - left
+        - right
+    cascade: true
+    default: left
+  gap-between-text-box-and-grid:
+    type: select
+    options: 
+      allow_empty: false
+      values:
+          - small
+          - medium
+          - large
+  content-max-width:
+    type: select
+    options:
+      allow_empty: true
+      values:
+        500px: small
+        640px : medium
+        768px: large
+        1024px: Extra large
+  youtube_placeholder:
+    type: image
+    cascade: true
+
+
+_structures:
+  blocks:
+    style: modal
+    values:
+      - label: Simple banner
+        picker_preview:
+          text: Simple banner
+          subtext:
+          icon:
+          icon_color:
+          image:
+          metadata:
+          gallery:
+            image: /uploads/banner-preview.png
+            icon:
+            icon_color:
+            fit:
+        tags:
+        value:
+          _id: banner
+          block-content-html: <h2> banner heading </h2> <p> subtext </p>
+          content-max-width:
+          background-desktop-image: 
+          background-mobile-image: 
+          text-alignment: center
+          vert-alignment: middle
+          
+          overlay-opacity: 0.5op
+          min-height: 80vh
+          color-scheme: base
+      - label: Text & video grid
+        picker_preview:
+          text: Text and video grid
+          subtext:
+          icon:
+          icon_color:
+          image:
+          metadata:
+          gallery:
+            image: /uploads/split-grid-preview.png
+            icon:
+            icon_color:
+            fit:
+        tags:
+        value:
+          _id: banner-split-video
+          block-content-html:
+          background-desktop-image: /uploads/screenshot-2024-09-30-at-4-12-25-pm.png
+          background-mobile-image: /uploads/screenshot-2024-09-30-at-4-12-25-pm.png
+          videos:
+            - video_path: /uploads/WEBSITE-BANNER.mp4
+              video_type: mp4
+          background-alt: 
+          desktop-image-position: right
+          text-alignment: left
+          vert-alignment: bottom
+          mobile-image-position: bottom
+          img_aspect: Square
+          collapse-top-space: false
+          collapse-bottom-space: false
+          color-scheme: dark
+      - label: Text & image grid
+        picker_preview:
+          text: Text and image grid
+          subtext:
+          icon:
+          icon_color:
+          image:
+          metadata:
+          gallery:
+            image: /uploads/split-grid-preview.png
+            icon:
+            icon_color:
+            fit:
+        tags:
+        value:
+          _id: banner-split
+          block-content-html:
+          background-desktop-image: /uploads/screenshot-2024-09-30-at-4-12-25-pm.png
+          background-mobile-image: /uploads/screenshot-2024-09-30-at-4-12-25-pm.png
+          background-alt: 
+          desktop-collapse-bg-padding: true
+          desktop-image-position: right
+          text-alignment: left
+          vert-alignment: bottom
+          mobile-image-position: bottom
+          mobile-collapse-bg-padding: false
+          img_aspect: Square
+          collapse-top-space: false
+          collapse-bottom-space: false
+          color-scheme: dark
+      - label: Video banner
+        picker_preview:
+          text: Video banner
+          subtext:
+          icon:
+          icon_color:
+          image:
+          metadata:
+          gallery:
+            image: /uploads/banner-preview.png
+            icon:
+            icon_color:
+            fit:
+        tags:
+        value:
+          _id: banner-video
+          block-content-html:
+          content-max-width:
+          videos:
+            - video_path: /uploads/screenshot-2024-09-30-at-4-12-25-pm.png
+              video_type: mp4
+          placeholder_image: 
+          controls: false
+          autoplay: true
+          text-alignment: center
+          vert-alignment: middle
+          overlay-opacity: 0.5op
+          min-height: 80vh
+          color-scheme: dark
+      - label: youtube banner
+        picker_preview:
+          text: youtube banner
+          subtext:
+          icon:
+          icon_color:
+          image:
+          metadata:
+          gallery:
+            image: /uploads/banner-preview.png
+            icon:
+            icon_color:
+            fit:
+        tags:
+        value:
+          _id: banner-youtube
+          block-content-html: <h2> Simple heading </h2>
+          text-alignment: right
+          embed_code: <iframe width="560" height="315" src="https://www.youtube.com/embed/74qoqck7JVw?si=Q8EtE8su1RUk--ts" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          color-scheme: base
+      - label: text block
+        picker_preview:
+          text: text block
+          subtext:
+          icon:
+          icon_color:
+          image:
+          metadata:
+          gallery:
+            image: /uploads/text-preview.png
+            icon:
+            icon_color:
+            fit:
+        tags:
+        value:
+          _id: text-block
+          block-content-html:
+          content-max-width:
+          text-alignment: center
+          color-scheme: base
+          min-height: 50vh
+      - label: pricing block
+        picker_preview:
+          text: pricing block
+          subtext:
+          icon:
+          icon_color:
+          image:
+          metadata:
+          gallery:
+            image: /uploads/pricing-preview.png
+            icon:
+            icon_color:
+            fit:
+        tags:
+        value:
+          _id: custom-program-block
+          color-scheme: base
+          
+      - label: Blog content block
+        picker_preview:
+          text: Blog content block
+          subtext:
+          icon:
+          icon_color:
+          image:
+          metadata:
+          gallery:
+            image: /uploads/blog-preview.png
+            icon:
+            icon_color:
+            fit:
+        tags:
+        value:
+          _id: blog-content-block
+          content-max-width: 640px
+          color-scheme: base
+      - label: Contact form
+        picker_preview:
+          text: Contact form
+          subtext:
+          icon:
+          icon_color:
+          image:
+          metadata:
+          gallery:
+            image: /uploads/contact-preview.png
+            icon:
+            icon_color:
+            fit:
+        tags:
+        value:
+          _id: contact
+          block-content-html:
+          text-alignment: center
+          color-scheme: base
+          max-width: 660px
+          form-max-width: 900px
+      - label: Clickable slider
+        picker_preview:
+          text: Clickable slider
+          subtext:
+          icon:
+          icon_color:
+          image:
+          metadata:
+          gallery:
+            image: /uploads/slider-preview.png
+            icon:
+            icon_color:
+            fit:
+        tags:
+        value:
+          _id: slider
+          block-content-html: <h2> Slider heading </h2><h3>  with subheading  </h3>
+          slider_col_color_scheme: dark
+          slider:
+            - image: 
+              video_path: /uploads/screenshot-2024-09-30-at-4-12-25-pm.png
+              video_type: mp4
+              link:
+          color-scheme: dark
+      - label: Grid
+        picker_preview:
+          text: Grid
+          subtext:
+          icon:
+          icon_color:
+          image:
+          metadata:
+          gallery:
+            image: /uploads/grid-preview.png
+            icon:
+            icon_color:
+            fit:
+        value:
+          _id: grid
+          block-content-html: >-
+            <h3 class="sub-heading"> OUR HOLISTIC APPROACH </h3> <h2>A personalised wellness retreat, tailored to you.</h2>
+          text-alignment: center
+          grid-desktop-columns: 4
+          grid-mobile-columns: 2
+          grid-gap: 1rem
+          col-internal-padding: true        
+          img-mixed-aspect: false
+          min-height: 0vh
+          gap-between-text-box-and-grid: small
+          columns:
+          collapse-top-space: false
+          collapse-bottom-space: false
+          color-scheme: dark
+      - label: Grid - blog loop
+        picker_preview:
+          text: Grid for the blog
+          subtext:
+          icon:
+          icon_color:
+          image:
+          metadata:
+          gallery:
+            image: /uploads/grid-preview.png
+            icon:
+            icon_color:
+            fit:
+        value:
+          _id: grid-blog-loop
+          block-content-html: >-
+            <h3 class="sub-heading"> OUR HOLISTIC APPROACH </h3> <h2>A personalised wellness blog, tailored to you.</h2>
+          text-alignment: center
+          grid-gap: 1rem
+          color-scheme: dark
+      - label: html block
+        picker_preview:
+          text: html block
+          subtext:
+          icon:
+          icon_color:
+          image:
+          metadata:
+          gallery:
+            image: /uploads/text-preview.png
+            icon:
+            icon_color:
+            fit:
+        value:
+          _id: liquid-block
+          liquid_code: >-
+            <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3944.494647487761!2d115.12809509999998!3d-8.6444149!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd247a13066d977%3A0x467f2ebcb0fb76ef!2sHair%20by%20therapy!5e0!3m2!1sen!2sau!4v1726985453546!5m2!1sen!2sau"
+            width="600" height="450" style="border:0;" allowfullscreen=""
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          cape-width: true
+          vertical-padding: true
+          color-scheme: base
+      - label: Scrolling grid
+        picker_preview:
+          text: Scrolling grid
+          subtext:
+          icon:
+          icon_color:
+          image:
+          metadata:
+          gallery:
+            image: /uploads/horizontal-scrolling-grid-preview.png
+            icon:
+            icon_color:
+            fit:
+        tags:
+        value:
+          _id: horizontal-scroll-basic
+          block-content-html: <h3> lorem </h3> <h2>  experiences  </h2>
+          image-width: max(25%, 8rem)
+          img_aspect: Square
+          scroll-items:
+            - image: /uploads/screenshot-2024-09-30-at-4-12-25-pm.png
+              block-content-html: >-
+                <h3>Lorem ipsum dolor</h3> <p> sit amet consectetur adipisicing elit. Ab
+                corporis obcaecati doloremque optio! Unde accusantium, esse
+                consectetur asperiores voluptates obcaecati nobis libero
+                necessitatibus vero labore quod eaque. Illum, tenetur alias!</p>
+              link:
+            - image: /uploads/screenshot-2024-09-30-at-4-12-25-pm.png
+              block-content-html: >-
+                <h3>Lorem ipsum dolor</h3> <p> sit amet consectetur adipisicing elit. Ab
+                corporis obcaecati doloremque optio! Unde accusantium, esse
+                consectetur asperiores voluptates obcaecati nobis libero
+                necessitatibus vero labore quod eaque. Illum, tenetur alias!</p>
+              link:
+            - image: /uploads/screenshot-2024-09-30-at-4-12-25-pm.png
+              block-content-html: >-
+                <h3>Lorem ipsum dolor</h3> <p> sit amet consectetur adipisicing elit. Ab
+                corporis obcaecati doloremque optio! Unde accusantium, esse
+                consectetur asperiores voluptates obcaecati nobis libero
+                necessitatibus vero labore quod eaque. Illum, tenetur alias!</p>
+              link:
+            - image: /uploads/screenshot-2024-09-30-at-4-12-25-pm.png
+              block-content-html: >-
+                <h3>Lorem ipsum dolor</h3> <p> sit amet consectetur adipisicing elit. Ab
+                corporis obcaecati doloremque optio! Unde accusantium, esse
+                consectetur asperiores voluptates obcaecati nobis libero
+                necessitatibus vero labore quod eaque. Illum, tenetur alias!</p>
+              link:
+          color-scheme: base
+      
+      - label: Accordion
+        value:
+          _id: accordion
+          block-content-html: <h2 class="heading-lg"> FREQUENTLY ASKED QUESTIONS </h2>
+          drop_down:
+            - button-text: a question that you might have
+              block-content-html: <p>answer to that question </p>
+          color-scheme: 
+      - label: Timeline
+        tags:
+        value:
+          _id: timeline
+          block-content-html:
+          color-scheme: base
+          max-width-timeline:
+          time-line-points:
+            - heading:
+              paragraph:
+      - label: Ticket banner
+        value:
+          _id: ticket-banner
+          banner_speed_in_px: 50
+          banner_message:
+            - text: floating message
+              url:
+            - text: clickable message
+              url: google.com
+          color-scheme: dark
+      - label: Text & image grid with experience fields
+        picker_preview:
+          text: text and grid with experience fields
+          subtext:
+          icon:
+          icon_color:
+          image:
+          metadata:
+          gallery:
+            image: /uploads/split-grid-preview.png
+            icon:
+            icon_color:
+            fit:
+        tags:
+        value:
+          _id: banner-split-experience-specific
+          block-content-html:
+          size: 40m2
+          bed: KING
+          type: Pool Suite
+          background-desktop-image: /uploads/screenshot-2024-09-30-at-4-12-25-pm.png
+          background-mobile-image: /uploads/screenshot-2024-09-30-at-4-12-25-pm.png
+          background-alt: 
+          desktop-collapse-bg-padding: true
+          desktop-image-position: right
+          section-gap: 1rem
+          text-alignment: center
+          vert-alignment: bottom
+          mobile-image-position: bottom
+          mobile-collapse-bg-padding: false
+          img_aspect: Square
+          collapse-top-space: false
+          collapse-bottom-space: false
+          color-scheme: dark
+      - label: feedback form
+        picker_preview:
+          text: feedback form
+          subtext:
+          icon:
+          icon_color:
+          image:
+          metadata:
+          gallery:
+            image: /uploads/contact-preview.png
+            icon:
+            icon_color:
+            fit:
+        tags:
+        value:
+            _id: feedback-form
+            block-content-html: <h2> We greatly value your feedback </h2><h3 class="sub-heading">thank you for staying at Sukhavati</h3><p>Out mission is to be the world's leading boutique spa, dedicated to promoting health, disease prevention, and optimal rejuvenation through the wisdom of Ayurveda. As one of our valued guests, your feedback greatly helps us continually enhance your experience and create a truly blissful and transformative retreat.</p><p>We would love to receive your thoughts on the questions below </p>
+            text-alignment: center
+            color-scheme: base
+            max-width: 660px
+            form-max-width: 900px
+      - label: text block with top overlap
+        picker_preview:
+          text: text block
+          subtext:
+          icon:
+          icon_color:
+          image:
+          metadata:
+          gallery:
+            image: /uploads/text-preview.png
+            icon:
+            icon_color:
+            fit:
+        tags:
+        value:
+          _id: text-block-top-overlap
+          block-content-html:
+          overlay-color-scheme: highlight
+          content-max-width:
+          text-alignment: center
+          color-scheme: base
+          min-height: 50vh
+  columns:
+    style: modal
+    values:
+      - label: Image
+        value:
+          col-type: img
+          image: /uploads/screenshot-2024-09-30-at-4-12-25-pm.png
+          image_alt:
+          img_aspect: Square
+          col-width: 2
+          col-height: 2
+          hide-on-mobile: false
+          mobile-first: false
+          image-position: 50% 50%
+      - label: Text Block
+        value:
+          col-type: text
+          block-content-html:
+          link:
+          text-alignment: center
+          vert-alignment:
+          icon-path:
+          icon-alt:
+          img_aspect: Original
+          color-scheme: base
+          col-width: 1
+          col-height: 1
+          hide-on-mobile: false
+          mobile-first: false
+      - label: video
+        value:
+          col-type: video
+          videos:
+            - video_path: /uploads/screenshot-2024-09-30-at-4-12-25-pm.png
+              video_type: mp4
+          video_controls: false
+          video_autoplay: false
+          img_aspect: Square
+          col-width: 1
+          col-height: 1
+          hide-on-mobile: false
+          mobile-first: true
+  header_links:
+    style: modal
+    values:
+      - label: simple link
+        value:
+          text: home
+          link: /
+      - label: link with sublinks
+        value:
+          text: home
+          link: /
+          sub_links:
+            - text: sublink 1
+              link: /
+            - text: sublink 2
+              link: /
+            - text: sublink 3
+              link: /
+timezone: Etc/UTC
+_snippets_definitions:
+  jekyll_liquid_format:
+    root_value_delimiter: '='
+    root_pair_delimiter:
+      - ''
+    array_boundary:
+      start: '['
+      end: ']'
+    array_delimiter: ','
+    string_boundary:
+      - '"'
+      - ''''
+    forbidden_tokens:
+      - '%}'
+      - '-%}'
+      - '}}'
+      - ','
+_snippets_templates:
+  jekyll_liquid_include:
+    snippet: '{% include [[name]] [[args]] %}'
+    params:
+      name:
+        parser: literal
+        options:
+          literal:
+            ref: include_name
+      args:
+        parser: key_values
+        options:
+          models:
+            ref: named_args
+          format:
+            ref: jekyll_liquid_format
+_snippets:
+  image_grid:
+    template: jekyll_liquid_include
+    inline: false
+    preview:
+      text: 3 image gallery
+    definitions:
+      include_name: snippets/imgGallery3.html
+      named_args:
+        - editor_key: first-image
+          type: string
+        - editor_key: first-alt
+          type: string
+        - editor_key: second-image
+          type: string
+        - editor_key: second-alt
+          type: string
+        - editor_key: third-image
+          type: string
+        - editor_key: third-alt
+          type: string
+        - editor_key: img_aspect
+          type: string
+  floating_image:
+    template: jekyll_liquid_include
+    inline: true
+    preview:
+      text: floating image
+    definitions:
+      include_name: snippets/image-float.html
+      named_args:
+        - editor_key: image
+          type: string
+        - editor_key: alt
+          type: string
+        - editor_key: float-direction
+          type: string
+        - editor_key: max-width
+          type: string

@@ -1,0 +1,105 @@
+
+<section class="px-0">
+  <div class="px-side">
+
+    <div class="max-width mb-[60px]">
+      <div class="
+      {% case block.text-alignment %}
+      {% when 'left' %}
+      mr-auto
+      {% when 'center' %}
+      mx-auto text-center
+      {% when 'right' %}
+      ml-auto text-right
+      {% endcase %}
+      mb-8
+      " {% if block.text-box-max-width %} style="max-width: min({{block.text-box-max-width}}, 100%) "{% endif %}>
+      
+      {% if noH1 == true %}
+      {{block.block-content-html | replace: 'h2','h1'}}
+      {% else %}
+      {{block.block-content-html}}
+      {% endif %}
+      
+      {% if block.block-content-html contains "h2" %}
+      {% assign noH1 = false %}
+      {% endif %}
+      </div>
+    </div>
+  </div>
+        <div class="slider mb-vert schem flex gap-[{{block.slider-col-padding | default: '6px'}}]">
+          {% for col in block.slider %}
+
+              {% if col.video_path %}
+              <div class="">
+                <div class="relative video-parent h-[50vh] flex-0 m-[{{block.slider-col-gap | default: '6px'}}]" style="aspect-ratio: {{col.video_aspect_ratio}};">
+                  <img class="absolute h-full w-full inset-0 object-cover" src="{{col.image}}" alt="" loading="lazy">
+                  <video class="absolute inset-0 h-full w-full object-cover lazy-vid" autoplay muted loop playsinline>
+                     <source data-src="{{col.video_path}}" type="video/{{col.video_type}}">
+                  </video>
+                </div>
+
+              </div>
+                {% else %}
+                <div class="">
+                  <img class="h-[50vh] width-auto flex-0 m-[{{block.slider-col-padding | default: '6px'}}]" src="{{col.image}}" alt=""loading="lazy">
+                </div>
+                {% endif %}
+              
+                {% endfor %}
+        </div>
+        <!-- Custom wrapper to hold arrows and dots -->
+        <div class="slick-nav"></div>
+      
+    </section>
+
+
+
+    <style>
+
+
+
+#section-{{forloop.index}} iframe{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+      .slider:has(> .scheme-{{block.slider_col_color_scheme}}) {
+        display:flex;
+        justify-content: flex-start
+      }
+
+    .slider > .scheme-{{block.slider_col_color_scheme}} {
+      display: inline-block;
+      width: 33%;
+     } 
+     .slider > .scheme-{{block.slider_col_color_scheme}}:nth-child(n+4){
+      display: none;
+     }
+
+      #section-{{forloop.index}} .image-sizer {
+      aspect-ratio: {% include logic/aspect-logic.html aspect = block.img_aspect %} ;
+    }
+
+    .video-target{opacity: 0; transition: all 1s;}
+
+
+    @media  (min-width: 750px) {
+      
+
+      #section-{{forloop.index}} section{
+        {% if block.collapse-top-space == true %}
+          padding-top: 1px;
+        {% endif %}
+      
+        {% if block.collapse-bottom-space == true %}
+            padding-bottom: 1px;
+        {% endif %}
+      
+      }
+    }
+  </style>
+

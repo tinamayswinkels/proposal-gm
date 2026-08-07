@@ -1,0 +1,48 @@
+
+<section id="schedule">
+      <div class="max-width" {% if block.max-width %} style="max-width: {{block.max-width}} "{% endif %}>
+          <div class="text-center mb-vert">
+            {% if noH1 == true %}
+            {{block.block-content-html | replace: 'h2','h1'}}
+            {% else %}
+            {{block.block-content-html}}
+            {% endif %}
+      
+            {% if block.block-content-html contains "h2" %}
+              {% assign noH1 = false %}
+            {% endif %}
+          </div>
+          <div class="mx-auto grid timeline-grid"  style="max-width: {{block.max-width-timeline}} ">
+              {% for point in block.time-line-points %}
+            <div class="relative">
+              <svg class="block mx-auto" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="10" cy="10" r="10" fill="var(--text-color)"/>
+              </svg>
+              {% unless forloop.last %}
+              <div class="vert-line"></div>
+              {% endunless %}
+            </div>
+            <div class="mb-small">
+              <h3 class="sub-heading">{{point.heading}}</h3>
+              <p class="pb-small mb-small">{{point.paragraph}}</p>
+            </div>
+              {% endfor %}
+          </div>
+      </div>
+    </section>
+
+
+
+    <style>
+      .timeline-grid {
+        grid-template-columns: 5rem 1fr;
+      }
+
+      .timeline-grid .vert-line{
+        position: absolute;
+        left: 50%;
+        height: 100%;
+        border: 1px solid var(--text-color);
+      }
+    </style>
+

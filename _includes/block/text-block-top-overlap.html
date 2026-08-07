@@ -1,0 +1,42 @@
+
+<section class="bg-inherit">
+  <div class="max-width
+  {% case block.text-alignment %}
+  {% when 'right' %}
+      text-right
+  {% when 'center' %}
+      text-center
+  {% else %}
+  {% endcase %}"
+   >
+   <div class="scheme-{{block.overlay-color-scheme}}">
+      <div class="color-set flex justify-center items-center ">
+        <div {% if block.content-max-width %} style="max-width: {{block.content-max-width}} "{% endif %}>
+          {% if noH1 == true %}
+          {{block.block-content-html | replace: 'h2','h1'}}
+          {% else %}
+          {{block.block-content-html}}
+          {% endif %}
+          
+          {% if block.block-content-html contains "h2" %}
+          {% assign noH1 = false %}
+          {% endif %}
+        </div>
+      </div>
+  </div>
+</div>
+  
+</section>
+
+
+<style>
+       #section-{{forloop.index}} .color-set {
+        min-height: {{block.min-height}};
+        margin-top: -6rem;
+        padding: 10%;
+      }
+
+       #section-{{forloop.index}} section {
+        padding-top: 3rem;
+      }
+</style>

@@ -1,0 +1,86 @@
+
+<section class="p-0" >
+  <div class="">
+  <div class="grid md:grid-cols-2  {{block.extra-grid-classes}} overflow-hidden justify-stretch">
+
+    <div class="picture relative mb-0 {{block.background-image-grid-classes}}">
+      <picture >
+        <source srcset="{{block.background-desktop-image}}" media="(min-width: 750px)" />
+        <img class="{% unless block.img_aspect == 'Original' %} absolute inset-0 h-full w-full object-cover object-center {% endunless %}" src="{{block.background-mobile-image}}" alt="{{block.background-alt}}"loading="lazy" />
+      </picture>
+          <video class="absolute inset-0 h-full w-full object-cover object-center lazy-vid" autoplay="" muted loop playsinline>
+      {% for video in block.videos %}
+      <source data-src="{{video.video_path}}" type="video/{{video.video_type}}">
+      {% endfor %}
+    </video>
+      
+    </div>
+    <div class="text-block px-side py-vert">       
+      {% if noH1 == true %}
+      {{block.block-content-html | replace: 'h2','h1'}}
+      {% else %}
+      {{block.block-content-html}}
+      {% endif %}
+
+      {% if block.block-content-html contains "h2" %}
+        {% assign noH1 = false %}
+      {% endif %}
+    </div>
+  </div>
+</div>
+</section>
+
+    <style>
+
+
+
+
+
+    #section-{{forloop.index}} .text-block {
+      text-align: {{block.text-alignment}};
+      align-self: {% case block.vert-alignment %}
+        {% when 'top' %}
+        self-start
+        {% when 'middle' %}
+        center
+        {% when 'bottom' %}
+        self-end
+        {% endcase %};
+      {% if block.desktop-image-position == 'right' %}
+        {% else %}
+          order:3;
+      {% endif %}
+    }
+
+    #section-{{forloop.index}} .picture{
+      padding-bottom: min(120%, 80vh);
+      /* min-height: 100%; */
+      align-self:center;
+      order:2;
+      max-height: {{block.max-height}};
+    }
+
+
+    @media (max-width: 750px) {
+      /* #section-{{forloop.index}} section{
+        flex-direction: column;
+      } */
+      #section-{{forloop.index}} .text-block{
+        /* padding-left: var(--max-width-side-padding); */
+        /* padding-right: var(--max-width-side-padding); */
+        {% if block.mobile-image-position == 'bottom' %}
+          order: 1;
+        {% else %}
+          order:3;
+      {% endif %}
+      }
+      
+      #section-{{forloop.index}} .picture{
+        width: 100vw;
+
+      }
+
+    }
+
+      
+    </style>

@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en" class="hide-scrollbars">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- google fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    
+
+
+    <link rel="icon" type="image/x-icon" href="{{page.seo.favicon | default: site.data.seo.favicon_image}}">
+    
+    
+    
+    <link rel="stylesheet" href="/editor.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    
+    <!-- meta-fields -->
+    <title>{{page.seo.title | default: site.data.seo.title }}</title>
+    <meta name="description" content="{{page.seo.description | default: site.data.seo.description}}">
+    <meta property="og:image" content="{{page.data.seo.image | default: site.data.seo.image}}"/>
+    
+    <meta name="google" content="nositelinkssearchbox">
+    {% if site.data.seo.google-site-verification %}
+      {{site.data.seo.google-site-verification}}
+    {% endif %}
+    
+    
+    {% if page.seo.index == true %}
+      <meta name="robots" content="all">
+    {% else %}
+      <meta name="robots" content="none">
+    {% endif %}
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MCVCFW13VC"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-MCVCFW13VC');
+    </script>
+
+<style>
+
+  @font-face {
+      font-family: 'Canela-heading'; 
+      src: url('/fonts/Canela-Family/Canela-Light-Trial.otf') format('opentype');
+  }
+
+  @font-face {
+      font-family: 'Canela-text'; 
+      src: url('/fonts/Canela-Text-Family/CanelaText-Light-Trial.otf') format('opentype');
+  }
+
+  @font-face {
+      font-family: 'Engravers-gothic'; 
+      src: url('/fonts/engravers-gothic-regular.otf') format('opentype');
+  }
+
+    :root{
+        --max-width: {{site.data.style.max-width}}px;
+        --side-gap: {{site.data.style.horizontal-padding}};
+        --vert-gap: {{site.data.style.vertical-padding}};
+        --animation-speed: {{site.data.style.animation-speed}};
+        --small-padding: {{site.data.style.small-padding}};
+        --heading-font-serif-family: 'Canela-heading', serif;
+        --heading-font-sans-family: 'Engravers-gothic', sans-serif;
+        --body-font-family: 'Canela-text', sans-serif;
+    }
+
+    body{
+        --max-width-side-padding: max({{site.data.style.horizontal-padding}},  calc( calc(100vw - var(--max-width)) / 2) );
+    }
+    :root,{% for scheme in site.data.style.schemes %}
+        .scheme-{{scheme.scheme_name}} {
+            --bg-color: {{scheme.bg-color}};
+            --text-color: {{scheme.text-color}};
+            --colored-button-bg: {{scheme.colored-button-bg-color}};
+            --colored-button-text: {{scheme.colored-button-text-color}};
+        }
+    {% endfor %}
+
+</style>
+
+
+</head>
+
+<body>
+  <div class="scheme-header absolute w-full top-0 z-50" id="header">
+  <header>
+    <div class="max-width flex justify-center items-center py-4">
+      <div class="text-center pt-8">
+          <h1 class="mb-0 leading-none text-4xl --heading-font-sans-family">Kelapa Creative</h1>
+          <h3 class="text-sm mt-0">AGENCY PARTNER PROPOSAL</h3>
+      </div>
+      <!-- <nav class="text-right hidden right-0 top-0 lg:block shrink-0">
+
+        {% assign noH1 = true %}
+        {% for link in site.data.navigation.header_links %}
+        <span 
+        class="text-left inline-block drop-finder p-[15px]
+          {% if link.sub_links %}
+            relative
+          {% endif %}
+          ">
+              {% if link.link %}
+              <a href="{{link.link}}">
+              {% else %}
+              <span class="unlinked">
+              {% endif %}
+                {{link.text}}
+              {% unless link.link %}
+              </span>
+              {% else %}
+              </a>
+              {% endunless %}
+
+          {% if link.sub_links %} 
+              <div class="absolute left-0 top-12 z-10 drop-down color-set min-w-min hidden">
+                {% for sub-link in link.sub_links %}
+                <a class="block whitespace-nowrap p-4" href="{{sub-link.link}}">{{sub-link.text}}</a>
+                {% endfor %}
+              </div>
+            {% endif %}
+        </span>
+        {% endfor %}
+        <a href="https://bookings.sukhavatibali.com/en/product/panchakarma" class="button ml-[15px]">Book Now</a>
+        </nav>
+      <div class="lg:hidden">
+        <div class="burger-button">
+          <span class="burger-top"></span>
+          <span class="burger-middle"></span>
+          <span class="burger-bottom"></span>
+      </div>
+       <div class="burger-menu color-set">
+
+        <a href="/">
+          <img class="mix-blend-multiply" style="max-width: min({{site.data.navigation.header_logo_width}}, 100%)" src="{{site.data.navigation.logo_image}}" alt="{{site.data.navigation.logo_alt}}">
+        </a>
+        <a href="https://bookings.sukhavatibali.com/en/product/panchakarma" class="button !inline-block ml-[15px]">Book Now</a>
+        {% for link in site.data.navigation.header_links %}
+
+        <a class="main-link" href="{{link.link}}">{{link.text}}</a>
+        {% if link.sub_links %}
+          <div class="ml-small">
+            {% for sub-link in link.sub_links %}
+              <a class="block whitespace-nowrap p-4" href="{{sub-link.link}}">{{sub-link.text}}</a>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+
+          {% endfor %}
+
+      </div>
+      </div>
+    </div> -->
+  </header>
+</div>
+
+
+
+  {% if page.blocks %}
+    
+    {% for block in page.blocks %}
+          <div class="scheme-{{block.color-scheme}} relative" id="section-{{forloop.index}}">
+            {% comment %} to figure out what block you added in inspect {% endcomment %}
+              <!--{{block._id}} -->
+              {% include /block/{{block._id}}.html %}
+          </div>
+          <!-- script check -->
+        {% if block._id == 'accordion' %}
+          {% assign hasAccordion = true %}
+        {% endif %}
+
+        {% if block._id == 'ticket-banner' %}
+          {% assign hasTicketBanner = true %}
+        {% endif %}
+        {% if block._id == 'banner-video' %}
+          {% assign hasVideo = true %}
+        {% endif %}
+        {% if block._id == 'banner-split-video' %}
+          {% assign hasVideo = true %}
+        {% endif %}
+
+        {% if block._id == 'slider' %}
+          {% assign hasSlider = true %}
+        {% endif %}
+        {% if block._id == 'slider-blog-loop' %}
+        {% assign hasSlider = true %}
+        {% endif %}
+        {% if block._id == 'horizontal-scroll-basic' %}
+          {% assign hasCSSSlider = true %}
+        {% endif %}
+    {% endfor %}
+
+  {% else %}
+    <section>
+      <div class="max-width">
+        {{content}}
+      </div>
+    </section>
+  {% endif %}
+
+  <!-- footer -->
+  <footer class="scheme-footer">
+      <div class="md:flex justify-between items-center py-4">
+        <div class="text-left">
+          <img src="/uploads/kc-logo.png" width="120px">
+        </div>
+        <div class="text-left">
+          <div class="text-left">
+          <h3 class="mb-4"> Get in touch </h3>
+          <p class="text-sm mb-1"> hello@kelapacreative.com</p>
+          <p class="text-sm"> +62 812-3888-8888</p>
+        </div>
+
+
+{% if hasVideo == true  %}
+
+<script>
+
+addEventListener("load", (event) => {
+  const lazyVideos = document.querySelectorAll('.lazy-vid');
+  lazyVideos.forEach(vid => {
+    let sources = vid.querySelectorAll('source');
+    console.log(sources)
+    sources.forEach(source => {
+      source.src = source.dataset.src
+    })
+    
+    vid.load()
+  })
+
+})
+</script>
+
+{% endif %}
+
+
+
+
+
+
+
+{% if hasSlider == true  %}
+<!-- slick css -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!-- slick js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js" integrity="sha512-eP8DK17a+MOcKHXC5Yrqzd8WI5WKh6F1TIk5QZ/8Lbv+8ssblcz7oGC8ZmQ/ZSAPa7ZmsCU4e/hcovqR8jfJqA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+{% endif %}
+
+
+  
+
+
+
+
+<script>
+    console.log('worked here')
+
+// universal functions
+
+function passHeightUp(target) {
+    target.parentElement.parentElement.style.setProperty('--true-height',  `${target.offsetHeight}px` )
+  }
+
+
+
+
+{% if hasAccordion == true %}
+  const buttons = document.querySelectorAll(".expandButton");
+  const dropSecs = document.querySelectorAll(".drop-sec");
+
+  dropSecs.forEach(sec => {
+    passHeightUp(sec.querySelector(".content"))
+  })
+
+  onresize = (event) => {
+    dropSecs.forEach(sec => {
+      passHeightUp(sec.querySelector(".content"))
+  })
+
+  };
+
+  
+  function showMore() {
+      this.nextElementSibling.classList.toggle('collapsed');
+      this.classList.toggle('open')
+  }
+
+  buttons.forEach(button => {
+    button.addEventListener('click', showMore)
+  }
+  )
+
+  {% endif %}
+
+
+
+  {% if hasCSSSlider == true  %}
+  const cssSliders = document.querySelectorAll('.cssSlider');
+  console.log(cssSliders)
+  cssSliders.forEach(slider => {
+    let scrollContainer = slider.querySelector('.scroll-container');
+    let scrollItems = slider.querySelectorAll('.scroll-item');
+    let scrollLeftButton = slider.querySelector('.scroll-left');
+    let scrollRightButton = slider.querySelector('.scroll-right');
+    console.log('look here',scrollContainer, scrollItems, scrollLeftButton, scrollRightButton)
+
+    function scrollLeft() {
+      console.log(scrollItems[0].clientWidth, "going left")
+      scrollContainer.scrollBy({
+        left: -scrollItems[0].clientWidth,
+        behavior: 'smooth'
+      });
+    }
+
+    function scrollRight() {
+      console.log(scrollContainer.clientWidth, "going right")
+
+      scrollContainer.scrollBy({
+        left: scrollItems[0].clientWidth,
+        behavior: 'smooth'
+      });
+    }
+
+    scrollLeftButton.addEventListener('click', scrollLeft);
+    scrollRightButton.addEventListener('click', scrollRight);
+  });
+
+  {% endif %}
+
+
+
+  {% if hasTicketBanner == true %}
+  const tickerBanners = document.querySelectorAll('.tickerBanner');
+
+tickerBanners.forEach(banner => {
+
+
+
+  let textBlock = banner.querySelectorAll('.text-block');
+
+  console.log(textBlock[1].offsetWidth)
+
+  let bannerBlock = 0;
+  textBlock.forEach( block => {
+    bannerBlock += block.offsetWidth
+  });
+
+  let bannerLength = bannerBlock
+  console.log(bannerBlock)
+  console.log(banner.dataset.bannerSpeed)
+  
+  
+  banner.style.setProperty('--bannerBlockLength', `${bannerBlock}px`);
+  banner.style.setProperty('--bannerBlockTime', `${(bannerBlock / banner.dataset.bannerSpeed )}s`);
+
+  
+  function extendBanner() {
+  if (bannerLength < (screen.width + bannerBlock) ) {
+    textBlock.forEach(block => {
+    console.log(block.innerHTML)
+    // add the newly created element and its content into the DOM
+    banner.appendChild(block.cloneNode(true));
+    // banner.querySelector('a:last-child').innerHTML = block.innerHTML
+    // banner.querySelector('a:last-child').href = block.href
+      
+    });
+    bannerLength += bannerBlock;
+    console.log(bannerLength) 
+    extendBanner()
+  } else {
+    banner.classList.add('active')
+  }
+}
+
+
+
+  extendBanner()
+
+  console.log(bannerLength)
+
+})
+  {% endif %}
+
+
+  addEventListener("load", (event) => {
+
+    console.log('pageloaded')
+    
+    {% for block in page.blocks %}
+
+    console.log('this is a {{block._id}}')
+    
+    {% if block._id == 'slider' %}
+    
+    console.log('#section-{{forloop.index}} has slider')
+
+         $('#section-{{forloop.index}} .slider').slick({
+           dots: true,
+           arrows: true,
+           prevArrow:  `<button type="button" class="slick-prev" aria-label="scroll-left"><svg width="15px" height="15px" viewBox="0 0 24 24" stroke-width="1.5" fill="none" xmlns="http://www.w3.org/2000/svg" color="var(--text-color)"><path d="M21 12L3 12M3 12L11.5 3.5M3 12L11.5 20.5" stroke="var(--text-color)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>`,
+           nextArrow: `<button type="button" class="slick-next" aria-label="scroll-right"><svg width="15px" height="15px" viewBox="0 0 24 24" stroke-width="1.5" fill="none" xmlns="http://www.w3.org/2000/svg" color="var(--text-color)"><path d="M3 12L21 12M21 12L12.5 3.5M21 12L12.5 20.5" stroke="var(--text-color)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>`,
+            slidesToShow: 1,
+            appendArrows: $('.slick-nav'),
+            appendDots: $('.slick-nav'),
+            centerMode: true,
+            variableWidth: true,
+          });
+          
+          const sectionContainer{{forloop.index}} = document.querySelector('#section-{{forloop.index}}')
+
+
+          {% endif %}
+
+          {% if block._id == 'slider-blog-loop' %}
+    
+         $('#section-{{forloop.index}} .slider').slick({
+           dots: true,
+           arrows: true,
+           slidesToShow: {{block.slider_column_count}},
+           slidesToScroll: 1,
+           dragable: true,
+           infinite: true,
+           speed: 500,
+           fade: false,
+           cssEase: 'linear',
+           responsive: [
+              {
+                breakpoint: 1024,
+                settings: {
+                  slidesToShow: 3,
+                  slidesToScroll: 3,
+                }
+              },
+              {
+                breakpoint: 600,
+                settings: {
+                  slidesToShow: 2,
+                  slidesToScroll: 2
+                }
+              },
+              {
+                breakpoint: 480,
+                settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1
+                }
+              }]
+          });
+          
+          {% endif %}
+    {% endfor %}
+});
+
+</script>
+
+<!--
+TYPING ANIMATION  -- for the id animated-text
+
+    We .split() the original HTML by any <br/> tag, so we can treat breaks specially.
+
+    For each non-<br/> segment, we loop its characters, wrap each in a <span>, and bump delay by letterDelay.
+
+    When we hit a <br/>, we insert a real <br> node and bump delay by brPause (so there’s a longer pause at line breaks).
+
+    The CSS animation simply fades each <span> in when its animation-delay is reached.
+
+Adjust letterDelay and brPause at the top of the script to fine-tune speed.
+-->
+
+<!-- the script -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const initialDelay = 1;    // sec wait after scroll-into-view
+  const letterDelay  = 0.05; // sec between letters
+  const brPause      = 0.5;  // extra sec pause at each <br/>
+  const fadeDur      = 0.3;  // must match your CSS fadeIn duration
+  const cyclePause = 2; // seconds to pause before repeating the animation
+
+  const container = document.getElementById('animated-text');
+  if (!container) return;
+
+  // 1) Split original HTML into text chunks and <br/> tokens
+  const parts = container.innerHTML.split(/(<br\s*\/?>)/i);
+  container.innerHTML = '';  // clear it out
+
+  // 2) Wrap every character in a span.char, record maxDelay
+  let delay = 0;
+  let maxDelay = 0;
+  parts.forEach(part => {
+    if (/^<br/i.test(part)) {
+      container.appendChild(document.createElement('br'));
+      delay += brPause;
+    } else {
+      part.split('').forEach(ch => {
+        const span = document.createElement('span');
+        span.textContent = ch;
+        span.classList.add('char');
+        span.style.setProperty('--delay', delay + 's');
+        container.appendChild(span);
+        maxDelay = Math.max(maxDelay, delay);
+        delay += letterDelay;
+      });
+    }
+  });
+
+  // 3) Define a reusable cycle function
+  function runCycle() {
+    container.classList.remove('animate');   // reset all opacity→0
+    void container.offsetWidth;              // force reflow
+    container.classList.add('animate');      // kick off fade-in
+    // schedule next repeat
+    const totalMs = (maxDelay + fadeDur + cyclePause) * 1000;
+    setTimeout(runCycle, totalMs);
+  }
+
+  // 4) Wait for scroll-into-view, then start the loop after initialDelay
+  const observer = new IntersectionObserver((entries, obs) => {
+    if (entries[0].isIntersecting) {
+      setTimeout(runCycle, initialDelay * 1000);
+      obs.disconnect();
+    }
+  }, { threshold: 0.1 });
+
+  observer.observe(container);
+});
+</script>
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-16977095101">
+</script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-16977095101');
+</script>
+
+
+
+{% include popup-code.html %}
+
+
+
+
+</body>

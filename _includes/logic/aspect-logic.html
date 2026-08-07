@@ -1,0 +1,15 @@
+{% case include.aspect %}
+        {% when 'Square' %}
+        1
+        {% when 'Extra Tall' %}
+        9/25
+        {% when 'Tall Portrait' %}
+        9/16
+        {% when 'Portrait' %}
+        4/5
+        {% when 'Landscape' %}
+        5/4
+        {% when 'Wide Landscape' %}
+        16/9
+{% endcase %}
+
