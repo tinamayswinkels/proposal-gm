@@ -227,19 +227,55 @@
 
 <script>
 
-addEventListener("load", (event) => {
-  const lazyVideos = document.querySelectorAll('.lazy-vid');
-  lazyVideos.forEach(vid => {
-    let sources = vid.querySelectorAll('source');
-    console.log(sources)
-    sources.forEach(source => {
-      source.src = source.dataset.src
-    })
-    
-    vid.load()
-  })
 
-})
+const videoObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    const vid = entry.target;
+    if (entry.isIntersecting) {
+      // load the real source only now
+      if (!vid.dataset.loaded) {
+        vid.querySelectorAll('source').forEach(source => {
+          source.src = source.dataset.src;
+        });
+        console.log( "just loaded",vid )
+        vid.load();
+        vid.dataset.loaded = "true";
+      }
+      vid.play().catch(() => {});
+    } else {
+      vid.pause(); // stop decoding offscreen video, saves CPU/GPU
+    }
+  });
+}, {
+  root: null,
+  rootMargin: "200px 0px", // start loading slightly before it's visible
+  threshold: 0.1
+});
+
+document.querySelectorAll('.lazy-vid').forEach(vid => videoObserver.observe(vid));
+
+$('.slider').on('init afterChange', function(event, slick, currentSlide) {
+  const current = currentSlide || 0;
+  // only load current slide's video, unload everything else
+  $('.slick-slide', this).each(function(i, el) {
+    const vid = el.querySelector('.lazy-slider-vid');
+    if (!vid) return;
+    const index = $(el).data('slick-index');
+    if (Math.abs(index - current) <= 1) {
+      if (!vid.dataset.loaded) {
+        vid.querySelectorAll('source').forEach(s => s.src = s.dataset.src);
+        vid.load();
+        vid.dataset.loaded = "true";
+      }
+      vid.play().catch(() => {});
+    } else if (vid.dataset.loaded) {
+      vid.pause();
+    }
+  });
+});
+
+
+
 </script>
 
 {% endif %}
